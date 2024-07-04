@@ -1,6 +1,7 @@
 # Digitized data
 /doc/data/generated
 /doc/data/raw/demo_data.csv.meta.yml
+/doc/data/raw/demo_data.csv
 
 
 # Byte-compiled / optimized / DLL files
