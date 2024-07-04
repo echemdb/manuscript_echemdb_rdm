@@ -1,0 +1,11 @@
+name: manuscript_echemdb_rdm
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - astropy>=6,<7
+  - ipykernel
+  - pandas>=2,<3
+  - python>=3.9
+  - watchdog>=4,<5
+  - unitpackage>=0.8.4,<0.9.0
