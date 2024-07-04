@@ -12,7 +12,7 @@ The examples from the manuscript and the usage of our tools for RDM applications
 The doc folder contains two Jupyter notebooks
 
 * [illustrating automatic annotation of metadata with watchdog](./doc/tag_data.ipynb)
-* [providing usage exampels for the unitpackage API](./doc/unitpackage_demo.ipynb)
+* [providing usage examples for the unitpackage API](./doc/unitpackage_demo.ipynb)
 
 and a folder with
 
