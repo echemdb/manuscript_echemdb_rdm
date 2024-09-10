@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/824276671.svg)](https://zenodo.org/doi/10.5281/zenodo.13739617)
+
 # Welcome to manuscript_echemdb_rdm
 
 This repository contains supporting information for the manuscript [to be submitted].
