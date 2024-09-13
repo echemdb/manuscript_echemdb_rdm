@@ -2,10 +2,10 @@
 
 # Welcome to manuscript_echemdb_rdm
 
-This repository contains supporting information for the manuscript [to be submitted].
+This repository contains supporting information for the manuscript denoted [echemdb Toolkit - a Lightweight Approach to Getting Data Ready for Data Management Solutions](https://arxiv.org/abs/2409.07083).
 The manuscript illustrates how echemdb's toolbox can be used for local research data management.
-It provides information on file naming convention (FNC) and automatic/programmatic metadata acquisition.
-Furthermore, the [unitpackages](https://echemdb.github.io/unitpackage/) API is introduced, which allows creating, interacting, and exploring frictionless datapackages.
+It provides information on file naming convention (FNC), automatic/programmatic metadata acquisition, and converting data into [frictionless Data Packages](https://datapackage.org/).
+Furthermore, the our [unitpackages](https://echemdb.github.io/unitpackage/) API is introduced (based on the [frictionless Python framework](https://framework.frictionlessdata.io/)), which allows creating, interacting, and exploring these Data Packages.
 
 The examples from the manuscript and the usage of our tools for RDM applications are also illustrated in a [specific documentation](https://echemdb.github.io/rawtofigure/intro.html).
 
