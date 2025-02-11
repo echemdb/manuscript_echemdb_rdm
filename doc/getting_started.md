@@ -36,8 +36,9 @@ experiment: My first demo experiment.
 ```
 
 Please refer to web resources to learn more about more complex YAML structures, such as [here](https://www.tutorialspoint.com/yaml/index.htm).
+A extensive example YAML file for experimental data can be found [here](files/yaml_templates/experiment_template.yaml).
 
-In the example above, the content is shown with syntax highlighting. Standard text editors of your operating system might not be shipped with that option. In some cases they can be enhanced with plugins. Otherwise we recommended using alternatives such as [Notepad++](https://notepad-plus-plus.org/) (Windows) or [VSCode](https://code.visualstudio.com/) (Platform independent). The latter comes in handy for the next sections.
+In the simple example above, the content is shown with syntax highlighting. Standard text editors of your operating system might not be shipped with that option. In some cases they can be enhanced with plugins. Otherwise we recommended using alternatives such as [Notepad++](https://notepad-plus-plus.org/) (Windows) or [VSCode](https://code.visualstudio.com/) (Platform independent). The latter comes in handy for the next sections.
 
 ## Automatic data annotation
 
