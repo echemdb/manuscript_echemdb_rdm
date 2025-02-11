@@ -1,0 +1,226 @@
+# This file has been inferred from https://github.com/echemdb/metadata-schema/blob/0.2.0/examples/file_schemas/autotag.yaml
+# It can be used to annotate measurement data during its creation using a tool such as autotag-metadata
+# Adding `field` data in `figure description` helpds in creating a datapackage.
+curation:
+  process:
+    - role: experimentalist
+      name: Albert Engstfeld
+      orcid: https://orcid.org/0000-0002-9686-3948
+    - role: supervisor
+      name: Albert Engstfeld
+      orcid: https://orcid.org/0000-0002-9686-3948
+eln:
+  url: # URL to the ELN describing the data
+loader: ecdata # The name of a loader which can be used to load and convert data
+experimental:
+  tags:
+    - BCV
+    - SPST
+  url: # For example: doi referring to a published work
+  instrumentation:
+    - type: potentiostat
+      manufacturer: Biologic
+      name: Poti1 # a unique name of the device
+    - type: mass spectrometer
+      model: xyz
+      manufacturer: Pfeiffer
+      name: MS-Lab2 # a unique name of the device
+    - type: pH meter
+      model: Lab850
+      manufacturer: SI Analytics
+      name: FancyDevice15 # a unique name of the device
+  description: some description # A string or a new set of metadata
+figure description: # We denote csv data as figure, as CSV is just a value representation of a graph or figure
+    type: raw
+    simultaneous measurements: # indicate if any other operando methods were shown in the same plot, which is linked to the data, i.e, voltage an temperature plotted on the time axis, but recorded with different devices
+    - Ring disc
+    comment: A description of the measurement data. # Add whatever you think is important to understand the data. This will be updated by the `svgdigitizer.electrochemistry.cv.CV` module and takes the comment from the svg file.
+    fields:
+      - name: E [V]
+        unit: V
+        type: number
+        dimension: E
+        reference: RHE
+      - name: t [s]
+        unit: s
+        type: number
+        dimension: t
+      - name: I / [A cm-2]
+        unit: A cm-2
+        type: number
+        dimension: j
+projects: # Descriptor of projects linked to the data.
+  - name: PPS
+    type: internal
+    url: # link to the description of the project
+  - name: SFB XXX
+    type: external
+    url: # project homepage
+    grant number: XXX # In case of numbers, add as string such as `00231`
+system:
+  type: electrochemical
+  electrolyte:
+    type: aqueous # aqueous = aq, non-aqueous=naq, solid=s, gas=g
+    electrolyte container:
+        description: glass flask # keys need to be defined for local data structuring. Usually anyway not provided in the literature.
+        components:
+          - name: borosilicate glass
+            type: flask
+            comment: some comment
+    components: # create as many components as necessary. A simple electrolyte consists of two components, i.e., H2SO4 and water. Often the electrolyte is purged with a gas, which should also be added as component
+      - name: Name # This is a standard component entry. Some entries are related to certain types of components.
+        concentration:
+          value: 1
+          unit: mol / l
+        type: salt # salt, base, acid, solvent, gas, ...
+        source:
+          supplier: company name # Company name, organic chemistry III - Uni Ulm
+          LOT: 155464A # LOT number
+          purity:
+            grade: 5N # analytical grade, 5N, etc
+            total organic carbon:
+              value: 3
+              unit: ppb
+            total ion conductivity:
+              value: 18
+              unit: MOhm cm
+        purity: # puity after refinement. Otherwise add purity to source
+          refinement: Thorough cleaning. # Description of additional cleaning procedures post purchase
+          grade: 6N
+          total organic carbon:
+            value: 3
+            unit: ppb
+          container: new name # the new container in which the chemical has been transferred for daily use
+          internal LOT: Number # Flask in which some of the chemicals were transferred
+          url: # details on the wiki
+        partial pressure: # if type gas
+          unit: 1
+          value: bar # use 1 bar for saturated solutions
+        proportion: # if type solvent
+          value: 100
+          unit: volume percent
+        flow:
+          value: null
+          unit: null
+        comment: Nothing special. # text description
+      - name: NaCl # can be trivia name, sum formula, etc
+        concentration:
+          value: 0.1
+          unit: mol / l # [mol / l, mmol / l, umol / l, g / kg, ...] Do not use M for molar. Use the string repesentation of units from astropy. https://docs.astropy.org/en/stable/units/index.html
+        type: salt #
+        source:
+          supplier: Supplier name
+          LOT: '654654'
+        purity:
+          grade: 5N
+      - name: water
+        type: solvent
+        proportion:
+          value: 50
+          unit: volume percent
+        source:
+          refinement: Sartorius Arium 611UV
+        purity:
+          grade: ultrapure water # qualitative description of the purity commonly used in the community
+          total organic carbon:
+            value: 3
+            unit: ppb
+      - name: ethanol
+        type: solvent
+        proportion:
+          value: 50
+          unit: volume percent
+        purity:
+          grade: analytical grade # qualitative description of the purity commonly used in the community
+      - name: H2SO4
+        type: acid
+        source:
+          supplier: Supplier name
+          LOT: C45456
+        concentration:
+          value: 0.1
+          unit: mol / l # [mol / l, mmol / l, umol / l, g / kg, ...] Do not use M for molar. Use the string repesentation of units from astropy. https://docs.astropy.org/en/stable/units/index.html
+      - name: N2
+        type: gas
+        purity:
+          grade: N5.0 # some genereic name
+        partial pressure:
+          unit: 1
+          value: bar # use 1 bar for saturated solutions
+        proportion:
+          value: 100
+        flow:
+          value: null
+          unit: null
+    ph:
+      value: 13
+      uncertainty: 0.1
+    temperature: # provide the temperature as it is given in the article. Assume room temperature if nothing is provided
+      value: 298.15
+      unit: K # allowed [K, C, F]
+  electrodes:
+    - name: RHE
+      function: reference electrode
+      redox system: RHE # the reference electrode given in the experimental section. Might differ from that in the plot: MSE-sat, MSE-3M, MSE-1M, RHE, AgCl2
+      source:
+        manufacturer: SI Analytics
+        model: Model 200
+        url: http://some.url.to.a.pdf.html
+      description: Home made RHE.
+      material: Pt
+      type: wire
+      shape:
+        description: Description of the shape.
+    - name: CE
+      function: counter electrode
+      material: Pt
+      type: wire
+      shape:
+        length:
+          value: 4
+          unit: mm
+        diameter:
+          value: 4
+          unit: mm
+      crystallographic orientation: poly
+      geometric electrolyte contact area:
+        value:
+        unit: cm-2
+    - name: WE
+      function: working electrode
+      type: single crystal
+      material: Ni
+      crystallographic orientation: "111" # 'hkl', '100', '110', '11,15,1', 'poly'. Force string with ''. Otherwise leading zeros will be removed and the entry will be understood as an octal number.
+      source:
+        manufacturer: Company name
+        LOT: 145823A # LOT number
+        purity:
+          grade: 5N
+      shape: # optional
+        type: cylinder # bead/sphere
+        height:
+          value: 4
+          unit: mm
+        diameter:
+          value: 4
+          unit: mm
+      geometric electrolyte contact area:
+        value: 1
+        unit: cm-2
+      preparation procedure:
+        description: # Short description of the sample preparation.
+          - Description step 1.
+          - Description Step 2.
+          - ...
+        url: https://www.preparation.html # Link to a page with a standard preparation procedure.
+  electrochemical cell:
+    type: glass electrolysis cell
+    components: # list of components in contact with the electrolyte
+      - name: glass
+        part: cell
+      - name: nafion
+        part: membrane
+    cell description: A classical electrochemical cell. # freetext description
+    cleaning procedure: Storing in highly concentrated KOH and boiling in Milli-Q water. # freetext description
+    source:
+      url: # DOI or URL where the design is published
